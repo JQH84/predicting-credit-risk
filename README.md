@@ -2,6 +2,8 @@
 
 Several machines learning models have been used in this exercise to be trained on mortgage loan data. The data was captured from the Lending Club as shown below with two tables utilized for the traning and testing of the models.
 
+Main Technologies used were : [scikit-learn](https://scikit-learn.org/stable/) , [imbalanced-learn](https://imbalanced-learn.org/stable/) , [Pandas](https://pandas.pydata.org/) and [NumPy](https://numpy.org/)
+
 - Lending Data Table
   | loan_size | interest_rate | homeowner | borrower_income | debt_to_income | num_of_accounts | derogatory_marks | total_debt | loan_status |
   | --------- | ------------- | --------- | --------------- | -------------- | --------------- | ---------------- | ---------- | ----------- |
