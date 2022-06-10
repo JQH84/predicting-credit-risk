@@ -1,5 +1,7 @@
 # Predicting Credit Risk For Loan Applications
 
+### Summary
+
 Several machines learning models have been used in this exercise to be trained on mortgage loan data. The data was captured from the Lending Club as shown below with two tables utilized for the traning and testing of the models.
 
 Main Technologies used were : [scikit-learn](https://scikit-learn.org/stable/) , [imbalanced-learn](https://imbalanced-learn.org/stable/) , [Pandas](https://pandas.pydata.org/) and [NumPy](https://numpy.org/)
@@ -7,32 +9,31 @@ Main Technologies used were : [scikit-learn](https://scikit-learn.org/stable/) ,
 - Lending Data Table
   | loan_size | interest_rate | homeowner | borrower_income | debt_to_income | num_of_accounts | derogatory_marks | total_debt | loan_status |
   | --------- | ------------- | --------- | --------------- | -------------- | --------------- | ---------------- | ---------- | ----------- |
-  | 10700.0 | 7.672 | own | 52800 | 0.431818 | 5 | 1 | 22800 | low_risk |
-  | 8400.0 | 6.692 | own | 43600 | 0.311927 | 3 | 0 | 13600 | low_risk |
-  | 9000.0 | 6.963 | rent | 46100 | 0.349241 | 3 | 0 | 16100 | low_risk |
-  | 10700.0 | 7.664 | own | 52700 | 0.430740 | 5 | 1 | 22700 | low_risk |
-  | 10800.0 | 7.698 | mortgage | 53000 | 0.433962 | 5 | 1 | 23000 | low_risk |
-
+  | 10700.0   | 7.672         | own       | 52800           | 0.431818       | 5               | 1                | 22800      | low_risk    |
+  | 8400.0    | 6.692         | own       | 43600           | 0.311927       | 3               | 0                | 13600      | low_risk    |
+  | 9000.0    | 6.963         | rent      | 46100           | 0.349241       | 3               | 0                | 16100      | low_risk    |
+  | 10700.0   | 7.664         | own       | 52700           | 0.430740       | 5               | 1                | 22700      | low_risk    |
+  | 10800.0   | 7.698         | mortgage  | 53000           | 0.433962       | 5               | 1                | 23000      | low_risk    |
 - Lending Statistics for Q1 2019
 
-| loan_amnt | int_rate | installment | home_ownership | annual_inc | verification_status |  issue_d | loan_status | pymnt_plan |   dti | ... | pct_tl_nvr_dlq | percent_bc_gt_75 | pub_rec_bankruptcies | tax_liens | tot_hi_cred_lim | total_bal_ex_mort | total_bc_limit | total_il_high_credit_limit | hardship_flag | debt_settlement_flag |     |
-| --------: | -------: | ----------: | -------------: | ---------: | ------------------: | -------: | ----------: | ---------: | ----: | --: | -------------: | ---------------: | -------------------: | --------: | --------------: | ----------------: | -------------: | -------------------------: | ------------: | -------------------: | --- |
-|   10500.0 |   0.1719 |      375.35 |           RENT |    66000.0 |     Source Verified | Mar-2019 |    low_risk |          n | 27.24 | ... |           85.7 |            100.0 |                  0.0 |       0.0 |         65687.0 |           38199.0 |         2000.0 |                    61987.0 |             N |                    N |     |
-|   25000.0 |   0.2000 |      929.09 |       MORTGAGE |   105000.0 |            Verified | Mar-2019 |    low_risk |          n | 20.23 | ... |           91.2 |             50.0 |                  1.0 |       0.0 |        271427.0 |           60641.0 |        41200.0 |                    49197.0 |             N |                    N |     |
-|   20000.0 |   0.2000 |      529.88 |       MORTGAGE |    56000.0 |            Verified | Mar-2019 |    low_risk |          n | 24.26 | ... |           66.7 |             50.0 |                  0.0 |       0.0 |         60644.0 |           45684.0 |         7500.0 |                    43144.0 |             N |                    N |     |
-|   10000.0 |   0.1640 |      353.55 |           RENT |    92000.0 |            Verified | Mar-2019 |    low_risk |          n | 31.44 | ... |          100.0 |             50.0 |                  1.0 |       0.0 |         99506.0 |           68784.0 |        19700.0 |                    76506.0 |             N |                    N |     |
-|   22000.0 |   0.1474 |      520.39 |       MORTGAGE |    52000.0 |        Not Verified | Mar-2019 |    low_risk |          n | 18.76 | ... |          100.0 |              0.0 |                  0.0 |       0.0 |        219750.0 |           25919.0 |        27600.0 |                    20000.0 |             N |                    N |     |
+| loan_amnt | int_rate | installment | home_ownership | annual_inc | verification_status |  issue_d | loan_status | pymnt_plan |   dti | ... | pct_tl_nvr_dlq | percent_bc_gt_75 | pub_rec_bankruptcies | tax_liens | tot_hi_cred_lim | total_bal_ex_mort | total_bc_limit | total_il_high_credit_limit | hardship_flag | debt_settlement_flag |  |
+| --------: | -------: | ----------: | -------------: | ---------: | ------------------: | -------: | ----------: | ---------: | ----: | --: | -------------: | ---------------: | -------------------: | --------: | --------------: | ----------------: | -------------: | -------------------------: | ------------: | -------------------: | - |
+|   10500.0 |   0.1719 |      375.35 |           RENT |    66000.0 |     Source Verified | Mar-2019 |    low_risk |          n | 27.24 | ... |           85.7 |            100.0 |                  0.0 |       0.0 |         65687.0 |           38199.0 |         2000.0 |                    61987.0 |             N |                    N |  |
+|   25000.0 |   0.2000 |      929.09 |       MORTGAGE |   105000.0 |            Verified | Mar-2019 |    low_risk |          n | 20.23 | ... |           91.2 |             50.0 |                  1.0 |       0.0 |        271427.0 |           60641.0 |        41200.0 |                    49197.0 |             N |                    N |  |
+|   20000.0 |   0.2000 |      529.88 |       MORTGAGE |    56000.0 |            Verified | Mar-2019 |    low_risk |          n | 24.26 | ... |           66.7 |             50.0 |                  0.0 |       0.0 |         60644.0 |           45684.0 |         7500.0 |                    43144.0 |             N |                    N |  |
+|   10000.0 |   0.1640 |      353.55 |           RENT |    92000.0 |            Verified | Mar-2019 |    low_risk |          n | 31.44 | ... |          100.0 |             50.0 |                  1.0 |       0.0 |         99506.0 |           68784.0 |        19700.0 |                    76506.0 |             N |                    N |  |
+|   22000.0 |   0.1474 |      520.39 |       MORTGAGE |    52000.0 |        Not Verified | Mar-2019 |    low_risk |          n | 18.76 | ... |          100.0 |              0.0 |                  0.0 |       0.0 |        219750.0 |           25919.0 |        27600.0 |                    20000.0 |             N |                    N |  |
 
 ## Two approaches were utilized and are stored in two different notebooks
 
 - Resampling the data and Running Logistic Regression learning by :
 
   1. Running the logistic regression without and resampling
-  1. Oversampling the data using the Naive Random Oversampler and SMOTE algorithms.
-  1. Undersampling the data using the Cluster Centroids algorithm.
-  1. Combination Over and Undesampling using the SMOTEENN algorithm.
-
+  2. Oversampling the data using the Naive Random Oversampler and SMOTE algorithms.
+  3. Undersampling the data using the Cluster Centroids algorithm.
+  4. Combination Over and Undesampling using the SMOTEENN algorithm.
 - Running the Ensabmle learning classifiers :
+
   1. Balanced Random Forest learning
   2. Easy Ensabmle learning
 
